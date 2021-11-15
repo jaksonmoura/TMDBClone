@@ -32,6 +32,6 @@ export const Title = styled.h3`
 `;
 
 export const ReleaseDate = styled.span`
-  font-size: .9rem;
+  font-size: 1.3rem;
   color: var(--textColor);
 `;

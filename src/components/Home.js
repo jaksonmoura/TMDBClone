@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import API from '../API'
 import {BACKDROP_SIZE, IMAGE_BASE_URL} from '../config'
 import {randomNumber} from '../helper'
-import Header from './Header'
 import HeroMovie from './HeroMovie'
 import MovieList from './MovieList'
 
@@ -56,10 +55,9 @@ const Home = () => {
 
     return(
         <>
-            <Header/>
             <HeroMovie { ...heroMovie }/>
+            <MovieList listTitle="Trending" movies={trending.results} trending fetchTrending={fetchTrending} />
             <MovieList listTitle="Now Playing" movies={nowPlaying.results} />
-            <MovieList listTitle="Trending" movies={trending.results} />
             <MovieList listTitle="Upcoming Movies" movies={upcomingMovies.results} />
         </>
     )
