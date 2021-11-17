@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Thumb = styled.a`
   display:inline-flex;
   flex-direction: column;
-  width: clamp(95px, 190px, 220px);
+  width: 100%;
   scroll-snap-align: start;
   color: var(--textColor);
 
@@ -20,15 +20,17 @@ export const Thumb = styled.a`
 `;
 
 export const ThumbImg = styled.img`
-  width: clamp(95px, 190px, 220px);
+  width: ${props => props.fullWidth ? "100%" : "clamp(95px, 190px, 220px)"};
   background-size: cover;
   border-radius: var(--defaultRadius);
   margin-bottom: 4px;
+  @media screen and (max-width: 600px){
+    max-width: 150px;
+  }
 `;
 
 export const Title = styled.h3`
   margin: 0;
-  
 `;
 
 export const ReleaseDate = styled.span`
