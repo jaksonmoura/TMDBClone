@@ -3,7 +3,7 @@
   --mainColor: #06A780;
   --textColor: #333;
   --textColorLight: #666;
-  --Grey: #ccc;
+  --grey: #ccc;
   --lightGrey: #EEEEEE;
   --defaultRadius: 10px;
 }
@@ -34,6 +34,20 @@ body{
   width: 100%;
   max-width: var(--maxWidth);
   margin: 0 auto;
+
+  
+}
+
+@media screen and (min-width: 600px) and (max-width: 1240px){
+  .container{
+    width: calc(100% - 40px);
+  }
+}
+
+@media screen and (max-width: 600px){
+  .container{
+    width: calc(100% - 20px);
+  }
 }
 
 h1,h2,h3,h4,h5,h6{
