@@ -16,6 +16,10 @@ export const HeroWrapper = styled.a`
     text-shadow: 0 2px 5px rgba(0,0,0, .3);
     margin-bottom: 100px;
 
+    @media screen and (max-width: 600px){
+      height: 50vh;
+    }
+
     &:before{
         content: "";
         width: 100%;
@@ -32,9 +36,15 @@ export const HeroTitle = styled.h1`
   color: #fff;
   margin-bottom: 0;
   z-index: 2;
+  @media screen and (max-width: 600px){
+    font-size: 3.5rem;
+  }
 `;
 
 export const HeroOverview = styled.p`
   color: #fff;
   z-index: 2;
+  @media screen and (max-width: 600px){
+    display: none;
+  }
 `;

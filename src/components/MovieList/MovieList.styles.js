@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
 
-export const MoviesList = styled.div`
+export const MoviesWrapper = styled.div`
   width: 100%;
-  ${'' /* padding: 0 60px; */}
   margin-bottom: 100px;
+  @media screen and (max-width: 600px){
+    margin-bottom: 50px;
+  }
 `;
 
 export const ListTitle = styled.h2`
@@ -12,7 +14,7 @@ export const ListTitle = styled.h2`
   margin-top: 0;
 `;
 
-export const MovieGrid = styled.div`
+export const Movies = styled.div`
   width: 100%;
   overflow: hidden;
   overflow-x: scroll;
