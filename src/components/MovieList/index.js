@@ -1,5 +1,5 @@
 import React from 'react'
-import {MoviesList, ListHeader, ListTitle, MovieGrid} from './MovieList.styles'
+import {MoviesWrapper, ListHeader, ListTitle, Movies} from './MovieList.styles'
 import MovieThumb from '../MovieThumb'
 
 const MovieList = ({listTitle, fetchTrending, trending = false , movies = []}) => {
@@ -17,12 +17,15 @@ const MovieList = ({listTitle, fetchTrending, trending = false , movies = []}) =
     }
 
     return (
-        <MoviesList>
+        <MoviesWrapper>
             {trending ? <ListHead/> : <ListTitle>{listTitle}</ListTitle>}
-            <MovieGrid>
-                {movies.map(movie => <MovieThumb key={movie.id} {...movie} /> )}
-            </MovieGrid>
-        </MoviesList>
+            <Movies>
+                {movies
+                    .sort((a, b) => new Date(b.release_date) - new Date(a.release_date))
+                    .map(movie => <MovieThumb key={movie.id} {...movie} /> )
+                }
+            </Movies>
+        </MoviesWrapper>
     )
 }
 
