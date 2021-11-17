@@ -28,7 +28,7 @@ const Home = () => {
         let rand = randomNumber(0, 19)
         setHeroMovie({
             id: nowP.results[rand].id,
-            title: nowP.results[rand].original_title,
+            title: nowP.results[rand].title,
             overview: nowP.results[rand].overview,
             backdrop: IMAGE_BASE_URL+BACKDROP_SIZE+nowP.results[rand].backdrop_path
         })
