@@ -38,8 +38,26 @@ export const ListHeader = styled.div`
     align-items: center;
     margin-bottom: 10px;
     li{
+      position: relative;
 
+      &[aria-selected="true"]{
+
+        a{
+          font-weight: 600;
+        }
+
+        &:before{
+          position: absolute;
+          content: "";
+          width: 100%;
+          height: 4px;
+          left: 0;
+          bottom: -4px;
+          background: var(--mainColor);
+        }
+      }
       a{
+        color: #333;
         font-size: 1.8rem;
       }
     }
