@@ -4,7 +4,6 @@ export const HeroWrapper = styled.a`
     overflow: hidden;
     width: 100%;
     height: 500px;
-    background-color: #fff;
     background-size: cover;
     border-radius: var(--defaultRadius);
     position: relative;
@@ -18,6 +17,20 @@ export const HeroWrapper = styled.a`
 
     @media screen and (max-width: 600px){
       height: 50vh;
+    }
+
+    
+      &:after{
+        content: "";
+        width: 80px;
+        height: 100%;
+        background: linear-gradient(270deg, var(--lightGrey), transparent);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        animation: loadingImg 3s;
+        animation-iteration-count: infinite;
     }
 
     &:before{

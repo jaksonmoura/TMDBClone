@@ -6,6 +6,23 @@ export const Thumb = styled.a`
   width: 100%;
   scroll-snap-align: start;
   color: var(--textColor);
+  position: relative;
+
+  img{
+    height: auto;
+    transition: opacity 1s ease-in-out;
+    opacity: 1;
+    display: block;
+  }
+
+  &.loading{
+    img{
+      display: none;
+      opacity: 0;
+    }
+    
+  }
+
 
   &:visited{
     color: var(--textColor);
@@ -20,13 +37,10 @@ export const Thumb = styled.a`
 `;
 
 export const ThumbImg = styled.img`
-  width: ${props => props.fullWidth ? "100%" : "clamp(95px, 190px, 220px)"};
+  width: ${props => props.fullWidth ? "100%" : "clamp(150px, 40vw, 190px)"};
   background-size: cover;
   border-radius: var(--defaultRadius);
   margin-bottom: 4px;
-  @media screen and (max-width: 600px){
-    max-width: 150px;
-  }
 `;
 
 export const Title = styled.h3`

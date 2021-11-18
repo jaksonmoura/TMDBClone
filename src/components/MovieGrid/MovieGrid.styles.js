@@ -16,7 +16,7 @@ export const Movies = styled.div`
   width: 100%;
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr))
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))
 `;
 
 
