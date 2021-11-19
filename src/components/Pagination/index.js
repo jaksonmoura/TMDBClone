@@ -14,7 +14,7 @@ const Pagination = ({totalPages = 1}) => {
             return(
                 <>
                     {pgNums.map(pg => <li><a key={pg} aria-current={(currentPage === pg ? "page" : "" )}  href={`/search/?q=${query}&page=${pg}`} >{pg}</a></li>)}
-                    <li className="jump-link"><a href={`/search/?q=${query}&page=${totalPages}`}>Next <i className="material-icons">keyboard_arrow_right</i></a></li>
+                    <li className="jump-link"><a href={`/search/?q=${query}&page=${totalPages}`}>Last <i className="material-icons">keyboard_arrow_right</i></a></li>
                 </>
                 )
         } else {
@@ -23,9 +23,9 @@ const Pagination = ({totalPages = 1}) => {
             let pgNums = prevNums.concat(nextNums)
             return(
                 <>
-                    <li className="jump-link"><a href={`/search/?q=${query}&page=1`}><i className="material-icons">keyboard_arrow_left</i> Previous</a></li>
+                    <li className="jump-link"><a href={`/search/?q=${query}&page=1`}><i className="material-icons">keyboard_arrow_left</i> First</a></li>
                     {pgNums.map(pg => <li><a key={pg} aria-current={(currentPage === pg ? "page" : "" )} href={`/search/?q=${query}&page=${pg}`} >{pg}</a></li>)}
-                    {( pgNums[pgNums.length - 1] !== totalPages ? <li className="jump-link"><a href={`/search/?q=${query}&page=${totalPages}`}>Next <i className="material-icons">keyboard_arrow_right</i></a></li> : "")}
+                    {( pgNums[pgNums.length - 1] !== totalPages ? <li className="jump-link"><a href={`/search/?q=${query}&page=${totalPages}`}>Last <i className="material-icons">keyboard_arrow_right</i></a></li> : "")}
                     
                 </>
 
