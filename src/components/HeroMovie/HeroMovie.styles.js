@@ -12,6 +12,7 @@ export const HeroWrapper = styled.a`
     justify-content: flex-end;
     padding: 20px;
     background-image: url(${props => props.backgroundImage || ""});
+    background-position: center center;
     text-shadow: 0 2px 5px rgba(0,0,0, .3);
     margin-bottom: 100px;
 
@@ -22,9 +23,9 @@ export const HeroWrapper = styled.a`
     
       &:after{
         content: "";
-        width: 80px;
+        width: 50%;
         height: 100%;
-        background: linear-gradient(270deg, var(--lightGrey), transparent);
+        background: linear-gradient(270deg, transparent 0%, #ccc 50%, transparent 100%);
         position: absolute;
         bottom: 0;
         left: 0;

@@ -107,7 +107,7 @@ input {
   position: relative;
   display: none;
   opacity: 0;
-  background: #f9f9f9;
+  background: #f1f1f1;
   transition: all 0.3s ease-in-out;
   border-radius: var(--defaultRadius);
   overflow: hidden;
@@ -121,21 +121,21 @@ input {
 .loading-img-box:before {
   position: absolute;
   content: "";
-  width: 40px;
+  width: 50%;
   height: 100%;
   top: 0;
-  background: linear-gradient(270deg, var(--lightGrey), transparent);
+  background: linear-gradient(270deg, transparent 0%, #fff 50%, transparent 100%);
   animation: loadingImg 1.5s;
   animation-iteration-count: infinite;
 }
 
 @keyframes loadingImg {
   0% {
-    left: 0%;
+    left: -100%;
     opacity: 1;
   }
   100% {
-    left: calc(100% - 40px);
+    left: 100%;
     opacity: 0;
   }
 }
