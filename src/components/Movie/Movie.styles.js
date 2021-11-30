@@ -31,7 +31,7 @@ export const MovieContainer = styled.div`
   z-index: 2;
 `;
 
-export const MainInfo = styled.div`
+export const MainInfoWrapper = styled.div`
   display: grid;
   grid-template-columns: 20% 80%;
   gap: 16px;
@@ -168,6 +168,100 @@ export const UserActions = styled.ul`
         &:hover {
           outline: 2px solid var(--mainColor);
         }
+      }
+    }
+  }
+`;
+
+
+export const Details = styled.div`
+  display: grid;
+  grid-template-columns: 20% 80%;
+
+  h3{
+    margin-bottom: 2rem;
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+  }
+`;
+
+export const SideInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+`;
+
+export const InfoList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  li{
+    display: flex;
+    flex-direction: column;
+  }
+
+  label{
+    font-weight: 500;
+  }
+`;
+
+export const SimilarMoviesList = styled.ul`
+  
+  ul{
+    display: flex;
+    flex-direction: column;
+    li{
+      display: grid;
+      grid-template-columns: 45% 55%;
+    }
+  }
+`;
+
+export const TabbedSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+`;
+
+export const TrailerSection = styled.div`
+
+`;
+
+export const CastSection = styled.section`
+  
+  .cast-list-wrapper{
+    width: 100%;
+    overflow: hidden;
+    overflow-x: scroll;
+    display: flex;
+    gap: 20px;
+    scroll-snap-type: x mandatory;
+    padding: 4px;
+    scroll-padding: 4px;
+  }
+  
+  ul{
+    display: inline-flex;
+    gap: 2rem;
+
+    li{
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      width: 140px;
+
+      img{
+        border-radius: var(--defaultRadius);
+      }
+
+      span{
+        font-weight: 300;
+        &.cast-name{
+          font-weight: 600;
+        }
+
       }
     }
   }

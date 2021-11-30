@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import API from "../../API";
-import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from "../../config";
+import { IMAGE_BASE_URL, BACKDROP_SIZE } from "../../config";
 import {
   MovieBackdrop,
   MovieContainer,
-  MainInfo,
-  PosterSection,
-  Poster,
-  OverviewSection,
-  OverviewMovieData,
-  UserActions,
+  Details,
+  SideInfo,
+  InfoList,
+  TabbedSection
 } from "./Movie.styles";
+import Cast from './Cast';
+import Trailer from './Trailer'
+import MainInfo from './MainInfo'
+import SimilarMovies from "./SimilarMovies";
 
 const movieObject = {
   adult: false,
@@ -22,6 +24,8 @@ const movieObject = {
     poster_path: "",
     backdrop_path: "",
   },
+  cast: [],
+  crew: [],
   budget: 0,
   genres: [
     {
@@ -72,27 +76,19 @@ const movieObject = {
 const Movie = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState(movieObject);
-
-  function setProgress(percent) {
-    const circle = document.querySelector(".progress-ring__circle");
-    const radius = circle.r.baseVal.value;
-    const circumference = radius * 2 * Math.PI;
-    circle.style.strokeDasharray = `${circumference} ${circumference}`;
-    circle.style.strokeDashoffset = circumference;
-    const offset = circumference - (percent / 100) * circumference;
-    circle.style.strokeDashoffset = offset;
-  }
+  const [credits, setCredits] = useState({ cast: [], crew: [], id: 0 });
 
   const fetchMovie = async (movieId) => {
-    const movieFetch = await API.fetchMovie(movieId);
+    let movieFetch = await API.fetchMovie(movieId);
+    let creditsFetch = await API.fetchMovieCredits(movieId);
     setMovie({ ...movieFetch });
-    console.log({ ...movieFetch });
+    setCredits({ ...creditsFetch });
+    console.log(creditsFetch);
   };
 
   useEffect(() => {
     fetchMovie(id);
-    setProgress(movie.vote_average * 10);
-  }, [id, movie.vote_average]);
+  }, [id]);
 
   return (
     <>
@@ -100,74 +96,26 @@ const Movie = () => {
         backgroundImage={IMAGE_BASE_URL + BACKDROP_SIZE + movie.backdrop_path}
       />
       <MovieContainer>
-        <MainInfo>
-          <PosterSection>
-            <Poster
-              alt=""
-              src={IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path}
-            />
-            <UserActions>
-              <ul>
-                <li>
-                  <button aria-label="Favorite">
-                    <i className="material-icons">favorite_border</i>
-                  </button>
-                </li>
-                <li>
-                  <button aria-label="Favorite">
-                    <i className="material-icons">star_border</i>
-                  </button>
-                </li>
-                <li>
-                  <button aria-label="Favorite">
-                    <i className="material-icons">bookmark_border</i>
-                  </button>
-                </li>
-                <li>
-                  <button aria-label="Favorite">
-                    <i className="material-icons">list</i>
-                  </button>
-                </li>
-              </ul>
-              <div className="other-actions">
-                <div className="score">
-                  <svg class="progress-ring" width="64" height="64">
-                    <circle
-                      class="progress-ring__circle"
-                      stroke-width="6"
-                      fill="transparent"
-                      r="28"
-                      cx="32"
-                      cy="32"
-                    />
-                  </svg>
-                  <span className="score-num">
-                    {movie.vote_average > 0 ? movie.vote_average : "NR"}
-                  </span>
-                </div>
-                <a className="share-btn" href="#">
-                  <i className="material-icons">share</i> Share
-                </a>
-              </div>
-            </UserActions>
-          </PosterSection>
-          <OverviewSection>
-            <h1>{movie.title}</h1>
-
-            <OverviewMovieData>
-              <span>
-                {new Date(movie.release_date).toLocaleDateString("en-US")}
-              </span>
-              <span>{movie.runtime}m</span>
-              <ul>
-                {movie.genres.map((genre) => (
-                  <li>{genre.name}</li>
-                ))}
-              </ul>
-            </OverviewMovieData>
-            <p>{movie.overview}</p>
-          </OverviewSection>
-        </MainInfo>
+        <MainInfo movie={movie} />
+        <Details>
+          <SideInfo>
+            <InfoList>
+              <li>
+                <label>Tuttu</label>
+                <p>ttatat</p>
+              </li>
+              <li>
+                <label>Tuttu</label>
+                <p>ttatat</p>
+              </li>
+            </InfoList>
+            <SimilarMovies movieId={movie.id} />
+          </SideInfo>
+          <TabbedSection>
+            <Trailer />
+            <Cast cast={credits.cast} />
+          </TabbedSection>
+        </Details>
       </MovieContainer>
     </>
   );
