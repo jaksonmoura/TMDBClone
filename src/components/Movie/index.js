@@ -14,6 +14,7 @@ import Cast from './Cast';
 import Trailer from './Trailer'
 import MainInfo from './MainInfo'
 import SimilarMovies from "./SimilarMovies";
+import {Languages} from '../../langs'
 
 const movieObject = {
   adult: false,
@@ -101,18 +102,26 @@ const Movie = () => {
           <SideInfo>
             <InfoList>
               <li>
-                <label>Tuttu</label>
-                <p>ttatat</p>
+                <label>Status</label>
+                <p>{movie.status}</p>
               </li>
               <li>
-                <label>Tuttu</label>
-                <p>ttatat</p>
+                <label>Original language</label>
+                <p>{Languages[movie.original_language].name}</p>
+              </li>
+              <li>
+                <label>Budget</label>
+                <p>{new Intl.NumberFormat("en-US",  { style: 'currency', currency: 'USD' }).format(movie.budget)}</p>
+              </li>
+              <li>
+                <label>Revenue</label>
+                <p>{new Intl.NumberFormat("en-US",  { style: 'currency', currency: 'USD' }).format(movie.revenue)}</p>
               </li>
             </InfoList>
             <SimilarMovies movieId={movie.id} />
           </SideInfo>
           <TabbedSection>
-            <Trailer />
+            <Trailer movieId={movie.id} />
             <Cast cast={credits.cast} />
           </TabbedSection>
         </Details>

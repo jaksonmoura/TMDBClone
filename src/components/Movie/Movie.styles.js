@@ -26,15 +26,15 @@ export const MovieBackdrop = styled.div`
 
 export const MovieContainer = styled.div`
   width: clamp(300px, 100%, 1100px);
-  margin: 0 auto;
+  margin: 0 auto 50px auto;
   position: relative;
   z-index: 2;
 `;
 
 export const MainInfoWrapper = styled.div`
   display: grid;
-  grid-template-columns: 20% 80%;
-  gap: 16px;
+  grid-template-columns: minmax(auto, 25%) minmax(auto, 75%);
+  gap: 1.6rem;
 `;
 
 export const PosterSection = styled.div`
@@ -176,7 +176,8 @@ export const UserActions = styled.ul`
 
 export const Details = styled.div`
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: minmax(auto, 25%) minmax(auto, 75%);
+  gap: 1.6rem;
 
   h3{
     margin-bottom: 2rem;
@@ -193,6 +194,7 @@ export const SideInfo = styled.div`
 `;
 
 export const InfoList = styled.ul`
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
@@ -200,10 +202,14 @@ export const InfoList = styled.ul`
   li{
     display: flex;
     flex-direction: column;
+
+    p{
+      margin: 0;
+    }
   }
 
   label{
-    font-weight: 500;
+    font-weight: 600;
   }
 `;
 
@@ -212,9 +218,67 @@ export const SimilarMoviesList = styled.ul`
   ul{
     display: flex;
     flex-direction: column;
+    gap: 1rem;
     li{
       display: grid;
       grid-template-columns: 45% 55%;
+      gap: 6px;
+      border-radius: var(--defaultRadius);
+
+      &:hover{
+        background: var(--lightGrey);
+      }
+
+      &>a{
+          display: contents;
+      }
+
+      .similar-data{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-bottom: .4rem;
+
+        a{
+          color: var(--textColor);
+          font-weight: 600;
+
+          span{
+            font-weight: 400;
+          }
+        }
+      }
+
+      .score {
+        width: 40px;
+        height: 40px;
+        display: inline-flex;
+        position: relative;
+
+        .progress-ring__circle {
+          transition: 0.5s stroke-dashoffset;
+          transform: rotate(-90deg);
+          transform-origin: 50% 50%;
+          stroke: var(--mainColor);
+          stroke-dashoffset: 175;
+        }
+
+        .score-num {
+          width: 100%;
+          height: 50%;
+          align-self: center;
+          position: absolute;
+          text-align: center;
+          font-size: 1.6rem;
+          font-weight: 500;
+          top: calc(50% - 1.1rem);
+        }
+      }
+
+      img{
+        width: 100%;
+        border-radius: var(--defaultRadius);
+      }
     }
   }
 `;
@@ -223,6 +287,15 @@ export const TabbedSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 6rem;
+
+  .aspect-ration-trailer{
+    aspect-ratio: 16 / 9;
+  }
+
+  iframe{
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 export const TrailerSection = styled.div`

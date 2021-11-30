@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import { IMAGE_BASE_URL, POSTER_SIZE } from "../../config";
+import { IMAGE_BASE_URL } from "../../config";
 import {
     MainInfoWrapper,
     PosterSection,
@@ -30,7 +30,7 @@ const MainInfo = ({movie}) => {
           <PosterSection>
             <Poster
               alt=""
-              src={IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path}
+              src={IMAGE_BASE_URL + "w300" + movie.poster_path}
             />
             <UserActions>
               <ul>
@@ -71,7 +71,7 @@ const MainInfo = ({movie}) => {
                     {movie.vote_average > 0 ? movie.vote_average : "NR"}
                   </span>
                 </div>
-                <a className="share-btn" href="#">
+                <a className="share-btn" href="#share">
                   <i className="material-icons">share</i> Share
                 </a>
               </div>
@@ -86,9 +86,9 @@ const MainInfo = ({movie}) => {
               </span>
               <span>{movie.runtime}m</span>
               <ul>
-                {/* {movie.genres.map((genre) => (
-                    <li>{genre.name}</li>
-                  ))} */}
+                {movie.genres.map((genre) => (
+                    <li key={genre.id} >{genre.name}</li>
+                  ))}
               </ul>
             </OverviewMovieData>
             <p>{movie.overview}</p>
