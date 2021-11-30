@@ -15,7 +15,7 @@ const IMAGE_BASE_URL = 'http://image.tmdb.org/t/p/';
 
 const BACKDROP_SIZE =  "w1280"
 const LOGO_SIZE = "w185"
-const POSTER_SIZE = "w500"
+const POSTER_SIZE = "w200"
 const PROFILE_SIZE = "w185"
 
 

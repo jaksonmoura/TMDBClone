@@ -21,6 +21,18 @@ const API = {
         let fetchURL = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`
         return await axios.get(fetchURL).then(response => (response.data))
     },
+    fetchMovieCredits: async (movieId) => {
+        let fetchURL = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
+        return await axios.get(fetchURL).then(response => (response.data))
+    },
+    fetchMovieSimilar: async (movieId = 0) => {
+        let fetchURL = `${API_URL}movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`
+        return await axios.get(fetchURL).then(response => (response.data))
+    },
+    fetchMovieTrailers: async (movieId = 0) => {
+        let fetchURL = `${API_URL}movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`
+        return await axios.get(fetchURL).then(response => (response.data))
+    },
     fetchLatestMovies: async () => {
         let fetchURL = LATEST_BASE_URL
         return await axios.get(fetchURL).then(response => (response.data))

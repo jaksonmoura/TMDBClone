@@ -3,9 +3,26 @@ import styled from "styled-components";
 export const Thumb = styled.a`
   display:inline-flex;
   flex-direction: column;
-  width: clamp(95px, 190px, 220px);
+  width: 100%;
   scroll-snap-align: start;
   color: var(--textColor);
+  position: relative;
+
+  img{
+    height: auto;
+    transition: opacity 1s ease-in-out;
+    opacity: 1;
+    display: block;
+  }
+
+  &.loading{
+    img{
+      display: none;
+      opacity: 0;
+    }
+    
+  }
+
 
   &:visited{
     color: var(--textColor);
@@ -20,7 +37,7 @@ export const Thumb = styled.a`
 `;
 
 export const ThumbImg = styled.img`
-  width: clamp(95px, 190px, 220px);
+  width: ${props => props.fullWidth ? "100%" : "clamp(150px, 40vw, 190px)"};
   background-size: cover;
   border-radius: var(--defaultRadius);
   margin-bottom: 4px;
@@ -28,10 +45,9 @@ export const ThumbImg = styled.img`
 
 export const Title = styled.h3`
   margin: 0;
-  
 `;
 
 export const ReleaseDate = styled.span`
-  font-size: .9rem;
+  font-size: 1.3rem;
   color: var(--textColor);
 `;

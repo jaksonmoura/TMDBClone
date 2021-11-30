@@ -1,15 +1,31 @@
 import React from 'react'
-import {MoviesList, ListTitle, MovieGrid} from './MovieList.styles'
+import {MoviesWrapper, ListHeader, ListTitle, Movies} from './MovieList.styles'
 import MovieThumb from '../MovieThumb'
 
-const MovieList = ({listTitle, movies = []}) => {
+const MovieList = ({listTitle, fetchTrending, trendMovieToggle = true, trending = false , movies = []}) => {
+
+    const ListHead = () =>{
+        return(
+            <ListHeader>
+                <ListTitle>{listTitle}</ListTitle>
+                <ul role="tablist">
+                    <li  aria-selected={(trendMovieToggle === true)}><a onClick={() => fetchTrending()} href="#movies">Movies</a></li>
+                    <li  aria-selected={(trendMovieToggle === false)}><a onClick={() => fetchTrending(false)} href="#tv">TV</a></li>
+                </ul>
+            </ListHeader>
+        )
+    }
+
     return (
-        <MoviesList>
-            <ListTitle>{listTitle}</ListTitle>
-            <MovieGrid>
-                {movies.map(movie => <MovieThumb key={movie.id} {...movie} /> )}
-            </MovieGrid>
-        </MoviesList>
+        <MoviesWrapper>
+            {trending ? <ListHead/> : <ListTitle>{listTitle}</ListTitle>}
+            <Movies>
+                {movies
+                    .sort((a, b) => new Date(b.release_date) - new Date(a.release_date))
+                    .map(movie => <MovieThumb key={movie.id} {...movie} /> )
+                }
+            </Movies>
+        </MoviesWrapper>
     )
 }
 
