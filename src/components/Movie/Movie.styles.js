@@ -1,4 +1,6 @@
 import styled from "styled-components";
+var sideMax = 270;
+
 
 export const MovieBackdrop = styled.div`
   width: 100%;
@@ -33,7 +35,7 @@ export const MovieContainer = styled.div`
 
 export const MainInfoWrapper = styled.div`
   display: grid;
-  grid-template-columns: minmax(auto, 25%) minmax(auto, 75%);
+  grid-template-columns: minmax(auto, ${sideMax}px) minmax(auto, 75%);
   gap: 1.6rem;
 `;
 
@@ -94,6 +96,8 @@ export const Poster = styled.img`
   border-radius: var(--defaultRadius);
   outline: 5px solid white;
   margin-bottom: 1rem;
+  max-width: ${sideMax}px;
+  align-self: center;
 `;
 
 export const OverviewSection = styled.div`
@@ -154,7 +158,7 @@ export const UserActions = styled.ul`
     gap: 1rem;
 
     li {
-      width: calc(25% - 1rem);
+      width: auto;
 
       &.double-size {
         flex-grow: 1;
@@ -176,7 +180,7 @@ export const UserActions = styled.ul`
 
 export const Details = styled.div`
   display: grid;
-  grid-template-columns: minmax(auto, 25%) minmax(auto, 75%);
+  grid-template-columns: ${sideMax}px minmax(auto, 75%);
   gap: 1.6rem;
 
   h3{
@@ -191,6 +195,7 @@ export const SideInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 6rem;
+  background: red;
 `;
 
 export const InfoList = styled.ul`
@@ -337,5 +342,24 @@ export const CastSection = styled.section`
 
       }
     }
+  }
+`;
+
+export const MovieMediaGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(1fr, 200px));
+  gap: 1rem;
+`;
+
+export const MovieMediaThumb = styled.a`
+  width: 100%;
+  height: 100px;
+  border-radius: 6px;
+  overflow: hidden;
+
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 `;
