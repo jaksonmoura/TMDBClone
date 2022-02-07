@@ -189,13 +189,19 @@ export const Details = styled.div`
     align-items: center;
     width: 100%;
   }
+
+  @media screen and (max-width: 992px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
 `;
 
 export const SideInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 6rem;
-  background: red;
+
+  
 `;
 
 export const InfoList = styled.ul`
@@ -203,6 +209,10 @@ export const InfoList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
+
+  @media screen and (max-width: 992px) {
+    flex-direction: row;
+  }
 
   li{
     display: flex;

@@ -8,6 +8,7 @@ const Cast = ({cast}) => {
             <h3>Actors and Actresses</h3>
               <div className="cast-list-wrapper">
                 <ul>
+                    {/* TODO: Adjuste for person with no image */}
                     {cast.map( c => 
                       <li>
                         <img src={IMAGE_BASE_URL + PROFILE_SIZE + c.profile_path} alt="" />    
