@@ -37,12 +37,25 @@ export const MainInfoWrapper = styled.div`
   display: grid;
   grid-template-columns: minmax(auto, ${sideMax}px) minmax(auto, 75%);
   gap: 1.6rem;
+
+  @media screen and (max-width: 800px){
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const PosterSection = styled.div`
   display: inline-flex;
   flex-direction: column;
   margin-top: -100%;
+
+  @media screen and (max-width: 800px){
+    margin-top: -40%;
+    align-items: center;
+
+    ul{
+      max-width: 300px;
+    }
+  }
 
   .score {
     width: 64px;
@@ -57,6 +70,10 @@ export const PosterSection = styled.div`
       transform-origin: 50% 50%;
       stroke: var(--mainColor);
       stroke-dashoffset: 175;
+
+      &.nr{
+        stroke: #ccc;
+      }
     }
 
     .score-num {
@@ -102,12 +119,29 @@ export const Poster = styled.img`
 
 export const OverviewSection = styled.div`
   width: 100%;
+  @media screen and (max-width: 800px){
+    display: flex;
+    flex-direction: column;
+    h1{
+      text-align: center;
+    }
+  }
 `;
 
 export const OverviewMovieData = styled.div`
   display: inline-flex;
-  gap: 30px;
+  gap: 0 30px;
   align-items: center;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: 800px){
+    justify-content: center;
+
+    ul{
+      justify-content: center;
+      gap: 4px 16px !important;
+    }
+  }
 
   span {
     position: relative;
@@ -132,6 +166,7 @@ export const OverviewMovieData = styled.div`
   ul {
     display: inline-flex;
     gap: 16px;
+    flex-wrap: wrap;
     align-items: center;
     li {
       font-weight: 600;
@@ -180,7 +215,7 @@ export const UserActions = styled.ul`
 
 export const Details = styled.div`
   display: grid;
-  grid-template-columns: ${sideMax}px minmax(auto, 75%);
+  grid-template-columns: ${sideMax}px calc(100% - 286px);
   gap: 1.6rem;
 
   h3{
@@ -191,7 +226,7 @@ export const Details = styled.div`
   }
 
   @media screen and (max-width: 992px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
     grid-template-rows: auto;
   }
 `;
@@ -199,9 +234,7 @@ export const Details = styled.div`
 export const SideInfo = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 6rem;
-
-  
+  gap: 6rem; 
 `;
 
 export const InfoList = styled.ul`
@@ -210,8 +243,13 @@ export const InfoList = styled.ul`
   flex-direction: column;
   gap: 1.6rem;
 
+  @media screen and (max-width: 800px) {
+    justify-content: center;
+  }
+
   @media screen and (max-width: 992px) {
     flex-direction: row;
+    width: 100%;
   }
 
   li{
@@ -228,12 +266,31 @@ export const InfoList = styled.ul`
   }
 `;
 
-export const SimilarMoviesList = styled.ul`
+export const SimilarMoviesList = styled.div`
+  width: 100%;
+  overflow: hidden;
   
   ul{
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
+    @media screen and (max-width: 992px) {
+      flex-direction: row;
+      width: 100%;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      gap: 20px;
+      scroll-padding: 4px;
+
+      li{
+        width: 210px;
+        grid-template-columns: 100px 100px !important; 
+
+        
+      }
+    }
+
     li{
       display: grid;
       grid-template-columns: 45% 55%;
@@ -302,9 +359,11 @@ export const TabbedSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 6rem;
+  width: 100%;
 
   .aspect-ration-trailer{
     aspect-ratio: 16 / 9;
+
   }
 
   iframe{
