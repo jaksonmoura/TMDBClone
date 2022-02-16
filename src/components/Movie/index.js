@@ -14,6 +14,7 @@ import Cast from './Cast';
 import Trailer from './Trailer'
 import MainInfo from './MainInfo'
 import SimilarMovies from "./SimilarMovies";
+import MovieMedia from './Media';
 import {Languages} from '../../langs'
 
 const movieObject = {
@@ -123,6 +124,7 @@ const Movie = () => {
           <TabbedSection>
             <Trailer movieId={movie.id} />
             <Cast cast={credits.cast} />
+            <MovieMedia movieId={movie.id} />
           </TabbedSection>
         </Details>
       </MovieContainer>

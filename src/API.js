@@ -33,6 +33,10 @@ const API = {
         let fetchURL = `${API_URL}movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`
         return await axios.get(fetchURL).then(response => (response.data))
     },
+    fetchMovieImages: async (movieId = 0) => {
+        let fetchURL = `${API_URL}movie/${movieId}/images?api_key=${API_KEY}&language=en-US`
+        return await axios.get(fetchURL).then(response => (response.data))
+    },
     fetchLatestMovies: async () => {
         let fetchURL = LATEST_BASE_URL
         return await axios.get(fetchURL).then(response => (response.data))
