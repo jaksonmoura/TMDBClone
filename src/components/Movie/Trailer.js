@@ -16,12 +16,12 @@ const Trailer = ({movieId}) => {
     })
 
     return (
-        <>
+        <div>
             <h3>Trailer</h3>
             <div className="aspect-ration-trailer">
                 <iframe src={`https://www.youtube.com/embed/${trailerURL}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-        </>
+        </div>
     )
 }
 

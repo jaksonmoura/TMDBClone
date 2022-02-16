@@ -13,6 +13,11 @@ const MainInfo = ({movie}) => {
 
     const setProgress = (percent) => {
         const circle = document.querySelector(".progress-ring__circle");
+        if (percent === 0) {
+          circle.classList.add("nr");
+          percent = 100;
+        }
+        
         const radius = circle.r.baseVal.value;
         const circumference = radius * 2 * Math.PI;
         circle.style.strokeDasharray = `${circumference} ${circumference}`;

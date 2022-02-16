@@ -5,7 +5,7 @@ import { MovieMediaGrid, MovieMediaThumb } from './Movie.styles';
 
 const MovieMedia = ({movieId}) => {
     const [apiMedia, setApiMedia] = useState({ backdrops: [], id: 0, logos: [], posters: [] });
-    const [allMedia, setAllMedia] = useState([]);
+    // const [allMedia, setAllMedia] = useState([]);
 
 
     const fetchMedia = async(id = 0) => {
