@@ -18,7 +18,7 @@ const Header = () =>{
                 <a href="/" className="logo"><img src="/logo.svg" alt="TMDB Clone" /></a>
 
                 <Form action="/search" method="get">
-                    <Input name="q" type="search" ref={searchTermRef} />
+                    <Input name="q" type="search" placeholder='Find a movie, tv show or series' ref={searchTermRef} />
                     <Button><i className="material-icons">search</i></Button>
                 </Form>
             </HeaderBox>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import API from '../../API'
-import { SimilarMoviesList } from './Movie.styles'
+import { SimilarMoviesList, SimilarMoviesListWrapper } from './Movie.styles'
 import SimilarMovieThumb from './SimilarMovieThumb';
 
 const SimilarMovies = ({movieId = 0}) => {
@@ -16,14 +16,17 @@ const SimilarMovies = ({movieId = 0}) => {
         fetchSimilar(movieId);
     }, [movieId])
 
+    if (similar.length === 0) return (<></>)
     return (
         <SimilarMoviesList>
             <h3>Similar movies</h3>
-            <ul>
-                {similar.sort( s => s.release_date ).filter( (s, i) => i < 4).map(s => 
-                    <SimilarMovieThumb movie={s} key={s.id} />
-                )}
-            </ul>
+            <SimilarMoviesListWrapper>
+                <ul>
+                    {similar.sort( s => s.release_date ).filter( (s, i) => i < 4).map(s => 
+                        <SimilarMovieThumb movie={s} key={s.id} />
+                    )}  
+                </ul>
+            </SimilarMoviesListWrapper>
         </SimilarMoviesList>
     )
 }

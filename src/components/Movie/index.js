@@ -85,7 +85,6 @@ const Movie = () => {
     let creditsFetch = await API.fetchMovieCredits(movieId);
     setMovie({ ...movieFetch });
     setCredits({ ...creditsFetch });
-    console.log(creditsFetch);
   };
 
   useEffect(() => {
@@ -94,9 +93,9 @@ const Movie = () => {
 
   return (
     <>
-      <MovieBackdrop
-        backgroundImage={IMAGE_BASE_URL + BACKDROP_SIZE + movie.backdrop_path}
-      />
+      <MovieBackdrop>
+        <img src={IMAGE_BASE_URL + BACKDROP_SIZE + movie.backdrop_path} alt="" />
+      </MovieBackdrop>
       <MovieContainer>
         <MainInfo movie={movie} />
         <Details>

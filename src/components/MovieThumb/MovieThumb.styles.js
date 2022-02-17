@@ -37,7 +37,7 @@ export const Thumb = styled.a`
 `;
 
 export const ThumbImg = styled.img`
-  width: ${props => props.fullWidth ? "100%" : "clamp(150px, 40vw, 190px)"};
+  width: ${props => props.fullWidth ? "100%" : "clamp(140px, 30vw, 190px)"};
   background-size: cover;
   border-radius: var(--defaultRadius);
   margin-bottom: 4px;

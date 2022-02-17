@@ -12,7 +12,30 @@ export const MovieBackdrop = styled.div`
   background-size: cover;
   background-position: center center;
   position: relative;
-  z-index: 1;
+  z-index: 0;
+
+  img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media screen and (max-width: 800px){
+    display: none;
+  }
+
+  &:after{
+      content: "";
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(270deg, transparent 0%, #ccc 50%, transparent 100%);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      animation: loadingImg 3s;
+      animation-iteration-count: infinite;
+  }
 
   &:before {
     content: "";
@@ -23,6 +46,15 @@ export const MovieBackdrop = styled.div`
     bottom: 0;
     left: 0;
     z-index: 1;
+  }
+`;
+
+export const Title = styled.h1`
+  display: ${(props => props.mobile ? "none" : "block")};
+
+  @media screen and (max-width: 800px){
+    display: ${(props => !props.mobile ? "none" : "block")};
+    text-align: center;
   }
 `;
 
@@ -49,11 +81,11 @@ export const PosterSection = styled.div`
   margin-top: -100%;
 
   @media screen and (max-width: 800px){
-    margin-top: -40%;
+    margin-top: 0;
     align-items: center;
 
     ul{
-      max-width: 300px;
+      max-width: 270px;
     }
   }
 
@@ -110,11 +142,17 @@ export const PosterSection = styled.div`
 
 export const Poster = styled.img`
   width: 100%;
+  height: 100%;
+  max-height: 405px;
   border-radius: var(--defaultRadius);
   outline: 5px solid white;
   margin-bottom: 1rem;
   max-width: ${sideMax}px;
-  align-self: center;
+  align-self: center;const [imgLoaded, setImgLoaded] = useState(false)
+
+  @media screen and (max-width: 600px){
+    max-width: 200px;
+  }
 `;
 
 export const OverviewSection = styled.div`
@@ -137,6 +175,7 @@ export const OverviewMovieData = styled.div`
   @media screen and (max-width: 800px){
     justify-content: center;
 
+
     ul{
       justify-content: center;
       gap: 4px 16px !important;
@@ -157,7 +196,7 @@ export const OverviewMovieData = styled.div`
       top: calc(50% - 3px);
       ${"" /* display: inline-block; */}
 
-      @media screen and (max-width: 600px) {
+      @media screen and (max-width: 800px) {
         display: none;
       }
     }
@@ -168,6 +207,7 @@ export const OverviewMovieData = styled.div`
     gap: 16px;
     flex-wrap: wrap;
     align-items: center;
+    flex-wrap: wrap;
     li {
       font-weight: 600;
     }
@@ -179,6 +219,13 @@ export const UserActions = styled.ul`
   flex-direction: column;
   margin-bottom: 1rem;
   gap: 1rem;
+  width: 100%;
+
+  @media screen and (max-width: 800px){
+    padding-bottom: 1rem;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--lightGrey);
+  }
 
   .other-actions{
     display: inline-flex;
@@ -244,12 +291,16 @@ export const InfoList = styled.ul`
   gap: 1.6rem;
 
   @media screen and (max-width: 800px) {
-    justify-content: center;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
   }
 
   @media screen and (max-width: 992px) {
     flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
+    justify-content: space-between;
   }
 
   li{
@@ -285,15 +336,16 @@ export const SimilarMoviesList = styled.div`
 
       li{
         width: 210px;
-        grid-template-columns: 100px 100px !important; 
+        display: flex !important;
+        flex-direction: column;
 
-        
       }
     }
 
     li{
       display: grid;
       grid-template-columns: 45% 55%;
+      max-width: 270px;
       gap: 6px;
       border-radius: var(--defaultRadius);
 
@@ -350,6 +402,46 @@ export const SimilarMoviesList = styled.div`
       img{
         width: 100%;
         border-radius: var(--defaultRadius);
+      }
+    }
+  }
+  
+`;
+
+export const SimilarMoviesListWrapper = styled.div`
+  width: 100%;
+  @media screen and (max-width: 992px){
+    overflow-y: hidden;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 4px;
+    ul{
+      width: fit-content;
+      flex-direction: row;
+
+      li{
+        width: 140px;
+
+        .similar-data{
+          flex-direction: column-reverse;
+          position: relative;
+
+          a{
+            padding-top: 14px;
+          }
+        }
+
+        .score{
+          position: absolute;
+          background: #fff;
+          top: -26px;
+          left: 4px;
+          z-index: 5;
+          border-radius: 50%;
+          padding-bottom: 2px;
+          ${'' /* outline: 2px solid #fff; */}
+          
+        }
       }
     }
   }

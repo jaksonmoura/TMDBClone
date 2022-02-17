@@ -17,7 +17,8 @@ export const HeroWrapper = styled.a`
     margin-bottom: 100px;
 
     @media screen and (max-width: 600px){
-      height: 50vh;
+      height: 200px;
+      margin-bottom: 60px;
     }
 
     
