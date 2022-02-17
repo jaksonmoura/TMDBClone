@@ -79,13 +79,13 @@ const Movie = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState(movieObject);
   const [credits, setCredits] = useState({ cast: [], crew: [], id: 0 });
+  const [imgLoaded, setImgLoaded] = useState(false)
 
   const fetchMovie = async (movieId) => {
     let movieFetch = await API.fetchMovie(movieId);
     let creditsFetch = await API.fetchMovieCredits(movieId);
     setMovie({ ...movieFetch });
     setCredits({ ...creditsFetch });
-    console.log(creditsFetch);
   };
 
   useEffect(() => {
@@ -94,9 +94,9 @@ const Movie = () => {
 
   return (
     <>
-      <MovieBackdrop
-        backgroundImage={IMAGE_BASE_URL + BACKDROP_SIZE + movie.backdrop_path}
-      />
+      <MovieBackdrop>
+        <img onLoad={() => setImgLoaded(true)} src={IMAGE_BASE_URL + BACKDROP_SIZE + movie.backdrop_path} alt="" />
+      </MovieBackdrop>
       <MovieContainer>
         <MainInfo movie={movie} />
         <Details>

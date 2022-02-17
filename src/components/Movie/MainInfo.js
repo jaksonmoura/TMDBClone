@@ -7,6 +7,7 @@ import {
     OverviewSection,
     OverviewMovieData,
     UserActions,
+    Title
   } from "./Movie.styles";
 
 const MainInfo = ({movie}) => {
@@ -32,6 +33,7 @@ const MainInfo = ({movie}) => {
 
     return(
         <MainInfoWrapper>
+          <Title mobile>{movie.title}</Title>
           <PosterSection>
             <Poster
               alt=""
@@ -83,7 +85,7 @@ const MainInfo = ({movie}) => {
             </UserActions>
           </PosterSection>
           <OverviewSection>
-            <h1>{movie.title}</h1>
+          <Title>{movie.title}</Title>
 
             <OverviewMovieData>
               <span>

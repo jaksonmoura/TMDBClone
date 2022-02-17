@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IMAGE_BASE_URL, POSTER_SIZE } from "../../config";
 
 
 const SimilarMovieThumb = ({movie}) => {
-
+  const [imgLoaded, setImgLoaded] = useState(false)
     const setProgress = (percent) => {
         const circle = document.querySelector(`.progress-ring__circle.circle_${movie.id}`);
         const radius = circle.r.baseVal.value;
@@ -21,7 +21,8 @@ const SimilarMovieThumb = ({movie}) => {
     return (
         <li>
             <a href={`/movie/${movie.id || 0}/`}>
-                <img src={IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path} alt="" />
+                <div className={`loading-img-box ${(imgLoaded ? "" : "loading")}`}></div>
+                <img onLoad={() => setImgLoaded(true)} src={IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path} alt="" />
             </a>
             <div className="similar-data">
                 <a href={`/movie/${movie.id || 0}/`}>
